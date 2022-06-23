@@ -165,7 +165,7 @@ td {
   min-height: calc(100vh - 60px);
   background-color: var(--primary);
   width: 300px;
-  border-right: .5px solid var(--text-color);
+  border-right: .5px solid var(--primary);
   overflow: hidden;
   transition: all .5s;
   z-index: 100;
