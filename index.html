@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bookshelf App</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="css/style.css">
+		<script>
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.setAttribute("data-theme", "dark");
+			} else {
+				document.documentElement.setAttribute("data-theme", "light");
+			}
+		</script>
+	</head>
+	<body>
+		
+		<header>
+			<div class="nav-brand">
+				<span><i class="fa-solid fa-book-open"></i></span>
+				<h1>Bookshelf App</h1>
+			</div>
+
+			<div class="sidebar-toggler">
+				<button id="sidebar-btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</header>
+
+		<main>
+			<aside class="sidebar">
+				<ul>
+					<li class="sidebar-item">
+						<a href="#semuaBuku">
+							<span class="icon">
+								<i class="fa-solid fa-book"></i>
+							</span>
+							Semua Buku
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#cariBuku">
+							<span class="icon">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</span>
+							Cari Buku
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#tambahBuku">
+							<span class="icon">
+								<i class="fa-solid fa-circle-plus"></i>
+							</span>
+							Tambah Buku Baru
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#sudahDibaca">
+							<span class="icon">
+								<i class="fa-brands fa-readme"></i>
+							</span>
+							Sudah Dibaca
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a href="#content-5">
+							<span class="icon">
+								<i class="fa-solid fa-book-open-reader"></i>
+							</span>
+							Belum Selesai Dibaca
+						</a>
+					</li>
+					<li class="sidebar-item" id="theme-toggler">
+						<a href="#">
+							<span class="icon">
+								<i id="themeIcon" class="fa-solid fa-moon"></i>
+							</span>
+							<span id="themeText"></span>
+						</a>
+					</li>
+				</ul>
+			</aside>
+
+			<section class="content">
+				<div id="semuaBuku">
+					<h2 class="title">Semua Buku</h2>
+					
+					<div class="isi-konten">
+						<table>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+									<th>Author</th>
+									<th>Year</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="isi-konten-1">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="cariBuku">
+					<h2 class="title">Cari Buku</h2>
+					
+					<div class="isi-konten">
+						<form id="searchBook">
+							<div class="form-group">
+								<label for="searchTitle">Judul Buku</label>
+								<input type="text" id="searchTitle" placeholder="Masukkan judul buku disini..." required>
+							</div>
+							<div class="form-group">
+								<button type="submit">
+									<span class="icon">
+										<i class="fa-solid fa-magnifying-glass"></i>
+									</span>
+									Cari
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="tambahBuku">
+					<h2 class="title">Tambah Buku Baru</h2>
+					
+					<div class="isi-konten">
+						<form id="addNewBook">
+							<div class="form-group">
+								<label for="bookTitle">Judul Buku</label>
+								<input type="text" id="bookTitle" placeholder="Masukkan judul buku" required>
+							</div>
+							<div class="form-group">
+								<label for="bookAuthor">Penulis Buku</label>
+								<input type="text" id="bookAuthor" placeholder="Masukkan penulis buku" required>
+							</div>
+							<div class="form-group">
+								<label for="bookYear">Tahun Terbit</label>
+								<input type="number" id="bookYear" placeholder="Masukkan tahun terbit buku" required>
+							</div>
+							<div class="form-group">
+								<input type="checkbox" id="bookIsComplete" />
+								<label for="bookIsComplete">Sudah dibaca</label>
+							</div>
+							<div class="form-group">
+								<button type="submit">
+									<span class="icon">
+										<i class="fa-solid fa-circle-plus"></i>
+									</span>
+									Tambah
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="sudahDibaca">
+					<h2 class="title">Sudah Dibaca</h2>
+					
+					<div class="isi-konten">
+						<table>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+									<th>Author</th>
+									<th>Year</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody id="sudah-dibaca">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="belumSelesai">
+					<h2 class="title">Belum Selesai Dibaca</h2>
+					
+					<div class="isi-konten">
+						<table>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Title</th>
+									<th>Author</th>
+									<th>Year</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody id="belum-selesai">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<p>
+				Made with <span style="color: red">❤</span> by <a href="https://instagram.com/lukmaan.24">Lukman</a>
+			</p>
+		</footer>
+		
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
