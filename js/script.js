@@ -257,7 +257,7 @@ const removeBook = (bookId) => {
   if (book === null)
     return;
   
-  books.splice(book, 1);
+  books.splice(books.indexOf(book), 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
   document.dispatchEvent(new Event(DELETE_EVENT));
 
